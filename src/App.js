@@ -12,7 +12,8 @@ class App extends Component {
     characters: [],
     initiativeStarted: false,
     current_character: 0,
-    current_color: ''
+    current_color: '',
+    errors: []
   }
 
   handleSubmit = (character) => {
@@ -35,7 +36,11 @@ class App extends Component {
     })
   }
 
-  toggleinitiative= () => {
+  toggleinitiative = () => {
+    if(this.checkForCharacters()){
+      this.setState({ errors: [{message: 'Please Add A Character before moving on'}]})
+      return
+    }
     this.setState((prevState) => { 
       let current_color = this.generateColor()
       let characters = [...prevState.characters].sort(
@@ -46,9 +51,17 @@ class App extends Component {
         characters, 
         initiativeStarted: !prevState.initiativeStarted,
         current_color,
-        current_character: 0
+        current_character: 0,
+        errors: []
       }
     })
+  }
+
+  checkForCharacters = () => {
+    if(this.state.characters.length === 0){
+
+      return true
+    }
   }
 
   sortByInitiative = () => {
@@ -114,6 +127,9 @@ class App extends Component {
                       Lets Battle!!
                   </button>
                 </div>
+                <ul>
+                  { this.state.errors && this.state.errors.map(({message}, index) => <li key={index}>{message}</li>)}
+                </ul>
                 <AddCharacterForm handleSubmit={this.handleSubmit} />
                 <CharactersList characters={this.state.characters} changeInitiative={this.updateInitiative}
                 removeCharacter={this.handleRemoveCharacter}
