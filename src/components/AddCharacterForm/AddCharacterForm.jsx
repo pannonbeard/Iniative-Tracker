@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types';
 
+import styles from './AddCharacterForm.module.sass'
+
 export default class AddCharacterForm extends Component {
   state = {
     name: '',
@@ -24,11 +26,12 @@ export default class AddCharacterForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>Character Name</label>
-        <input type='text' name='name' value={this.state.name} onChange={this.handleChange}/>
-        <br />
-        <button type='submit'>Submit</button>
+      <form onSubmit={this.handleSubmit} className={styles.AddCharacterForm}>
+        <div className={styles.FormGroup}>
+          <label htmlFor='name'>Char Name: </label>
+          <input id='name' type='text' name='name' value={this.state.name} onChange={this.handleChange}/>
+          <button type='submit'>Add</button>
+        </div>
       </form>
     )
   }

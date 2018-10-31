@@ -3,17 +3,17 @@ import React, {
 } from 'react';
 
 import './App.css';
-import AddCharacterForm from './components/AddCharacterForm'
+import AddCharacterForm from './components/AddCharacterForm/AddCharacterForm'
 import CharactersList from './components/CharactersList/CharactersList'
 import InitiativeViewer from './components/InitiativeViewer/InitiativeViewer'
 
 class App extends Component {
   state = {
     characters: [
-      { name: 'Steve', initiative: 12 },
-      { name: 'karl', initiative: 9 },
-      { name: 'Alan', initiative: 30 },
-      { name: 'Ann', initiative: 15 }
+      { name: 'Silmandil', initiative: 12 },
+      { name: 'Elewin', initiative: 9 },
+      { name: 'Aerafin', initiative: 30 },
+      { name: 'Baddies', initiative: 15 }
     ],
     initiativeStarted: false,
     current_character: 0,
@@ -88,6 +88,16 @@ class App extends Component {
     return `rgb(${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)})`
   }
 
+  handleRemoveCharacter = (index) => {
+    this.setState((prevState) => {
+      let characters = prevState.characters.filter((char,char_index) => char_index !== index)
+      return {
+        ...prevState,
+        characters
+      }
+    })
+  }
+
   render() {
     return ( 
       <div className = "App" >
@@ -99,20 +109,20 @@ class App extends Component {
               nextCharacter={this.goToNextCharacter}
               background_color={this.state.current_color}
              />
-            : <React.Fragment>
+            : <div className='container'>
+                <h1 style={{textAlign: 'center'}}>Iniative Tracker</h1>
                 <AddCharacterForm handleSubmit={this.handleSubmit} />
-                <CharactersList characters={this.state.characters} changeInitiative={this.updateInitiative}/>
-                <button 
-                  type='button' 
-                  onClick={this.toggleinitiative}>
-                    Start initiative
-                </button>
-                <button 
-                  type='button' 
-                  onClick={this.sortByInitiative}>
-                    Sort By initiative
-                </button>
-              </React.Fragment>
+                <CharactersList characters={this.state.characters} changeInitiative={this.updateInitiative}
+                removeCharacter={this.handleRemoveCharacter}
+                />
+                <div className='center'>
+                  <button 
+                    type='button' 
+                    onClick={this.toggleinitiative}>
+                      Lets Battle!!
+                  </button>
+                </div>
+              </div>
         }
         
         

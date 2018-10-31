@@ -1,8 +1,28 @@
 .CharactersList
-  background: green
-  width: 80%
+  box-sizing: border-box
+  background: #eee
+  width: 100%
+  padding: .5em 1em
   min-height: 50px
-  margin: 0 auto
+  margin: 0 auto 1em
+  border-radius: 5px
+  box-sizing: border-box
 
 .character
   box-sizing: border-box
+  font-size: 1.5em
+  margin: 0
+  display: grid
+  grid-template-columns: 100px auto 50px
+  width: 100%
+  justify-content: space-between
+  border-bottom: 1px solid #ddd
+  align-items: center
+  padding: .5em 0
+  &:first-child
+    padding-top: 0
+  &:last-child
+    border-bottom: none
+    padding-bottom: 0
+  input[type]
+    width: 40vw
