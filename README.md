@@ -2,6 +2,12 @@
 
 This is an iniative tracker to help you the GM keep track of the players in battle and not miss someone!
 
+## Getting Started
+
+* Clone the repo
+* run `yarn` to install dependencies
+* run `yarn start` to load up server
+
 ## Goals for tracker
 
 - [x] Enter Characters To track
