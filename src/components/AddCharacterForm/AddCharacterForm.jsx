@@ -6,7 +6,8 @@ import styles from './AddCharacterForm.module.sass'
 export default class AddCharacterForm extends Component {
   state = {
     name: '',
-    initiative: 0
+    initiative: 0,
+    errors: []
   }
 
   handleChange = (e) => {
@@ -17,16 +18,32 @@ export default class AddCharacterForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-    this.props.handleSubmit(this.state)
+    if(this.checkIfValid()){
+      return
+    }
+
+    this.props.handleSubmit({ ...this.state, errors: [] })
     this.setState({
       name: '',
-      initiative: 0
+      initiative: 0,
+      errors: []
     })
   }
 
+  checkIfValid(){
+    if(this.state.name === ''){
+      this.setState({ errors: [{ message: 'You need to put in a character name'}]})
+      return true
+    }
+  }
+
   render() {
+    const showErrors = this.state.errors.length > 0 ? '' : 'none'
     return (
       <form onSubmit={this.handleSubmit} className={styles.AddCharacterForm}>
+        <ul style={{ display: showErrors }}>
+          {this.state.errors && this.state.errors.map(({ message }, index) => <li key={index}>{message}</li>)}
+        </ul>
         <div className={styles.FormGroup}>
           <label htmlFor='name'>Char Name: </label>
           <input id='name' type='text' name='name' value={this.state.name} onChange={this.handleChange}/>
