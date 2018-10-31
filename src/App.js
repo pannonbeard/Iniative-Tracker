@@ -9,12 +9,7 @@ import InitiativeViewer from './components/InitiativeViewer/InitiativeViewer'
 
 class App extends Component {
   state = {
-    characters: [
-      { name: 'Silmandil', initiative: 12 },
-      { name: 'Elewin', initiative: 9 },
-      { name: 'Aerafin', initiative: 30 },
-      { name: 'Baddies', initiative: 15 }
-    ],
+    characters: [],
     initiativeStarted: false,
     current_character: 0,
     current_color: ''
