@@ -15,7 +15,7 @@ h1, h2, h3, h4{
 }
 
 h1{
-  font-size: 5vw;
+  font-size: 4em;
 }
 
 .container{
@@ -76,4 +76,27 @@ button{
   border-radius: 5px;
   font-size: 1rem;
   font-weight: 200;
+  text-transform: uppercase;
+}
+
+button:hover{
+  background: white;
+  color: black;
+  cursor: pointer;
+  border: 2px solid #ddd;
+  padding: calc(.5em - 2px) calc(.75em - 2px);
+  text-shadow: none;
+}
+
+button.btn-red{
+  background: #ff4d4d;
+  color: black;
+  font-weight: bold;
+}
+
+.battle-button{
+  font-size: 2em;
+  padding: 1rem 1.5rem;
+  background: #2eb82e;
+  text-shadow: 1px 1px 2px black;
 }

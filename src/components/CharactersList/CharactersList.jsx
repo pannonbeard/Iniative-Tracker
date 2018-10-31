@@ -19,8 +19,8 @@ export default class CharactersList extends Component {
                 (e) => this.props.changeInitiative(index, e.target.value)
               }
             />
-            <div style={{display: 'flex', alignItems: 'right'}}>
-              <button onClick={() => this.props.removeCharacter(index)}>X</button>
+            <div style={{display: 'flex', alignItems: 'right'}} >
+              <button className='btn-red' onClick={() => this.props.removeCharacter(index)}>X</button>
             </div>
           </div>
         )) : 'Add characters above...' }

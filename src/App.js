@@ -106,17 +106,19 @@ class App extends Component {
              />
             : <div className='container'>
                 <h1 style={{textAlign: 'center'}}>Initiative Tracker</h1>
-                <AddCharacterForm handleSubmit={this.handleSubmit} />
-                <CharactersList characters={this.state.characters} changeInitiative={this.updateInitiative}
-                removeCharacter={this.handleRemoveCharacter}
-                />
                 <div className='center'>
                   <button 
-                    type='button' 
+                    type='button'
+                    className='battle-button' 
                     onClick={this.toggleinitiative}>
                       Lets Battle!!
                   </button>
                 </div>
+                <AddCharacterForm handleSubmit={this.handleSubmit} />
+                <CharactersList characters={this.state.characters} changeInitiative={this.updateInitiative}
+                removeCharacter={this.handleRemoveCharacter}
+                />
+                
               </div>
         }
       </div>
