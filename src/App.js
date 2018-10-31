@@ -110,7 +110,7 @@ class App extends Component {
               background_color={this.state.current_color}
              />
             : <div className='container'>
-                <h1 style={{textAlign: 'center'}}>Iniative Tracker</h1>
+                <h1 style={{textAlign: 'center'}}>Initiative Tracker</h1>
                 <AddCharacterForm handleSubmit={this.handleSubmit} />
                 <CharactersList characters={this.state.characters} changeInitiative={this.updateInitiative}
                 removeCharacter={this.handleRemoveCharacter}
