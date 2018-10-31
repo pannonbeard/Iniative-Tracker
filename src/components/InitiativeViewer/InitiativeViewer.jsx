@@ -22,7 +22,8 @@ export default class IniativeViewer extends Component {
     return (
       <div className={styles.IniativeViewer} style={{backgroundColor: this.props.background_color}}>
         <div className={styles.CharacterName}>
-          {this.props.character.name}<br/>
+          {this.props.character.name}
+          <div className={styles.tagline}>Press 'Enter' to move forward</div>
         </div>
         <button className={styles.FloatingButton} onClick={this.props.toggleinitiative}>End Battle</button>
       </div>
